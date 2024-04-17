@@ -1,8 +1,9 @@
-#!/bin/bash
 
-for N in 1 2 3 4 5
-do docker exec -t mysqlorchdb$N mysql -uroot -pmypass \
- -e "CREATE DATABASE IF NOT EXISTS orchestrator;" \
- -e "CREATE USER 'orc_server_user' IDENTIFIED BY 'orc_server_password';" \
- -e "GRANT ALL PRIVILEGES ON orchestrator.* TO 'orc_server_user';"
-done
+docker run -d --name=source --hostname=source --net orchnet --ip "172.20.0.17" \
+  -e MYSQL_ROOT_PASSWORD=mypass \
+  mysql/mysql-server:8.0 \
+  --server-id=1 \
+  --enforce-gtid-consistency='ON' \
+  --log-slave-updates='ON' \
+  --gtid-mode='ON' \
+  --log-bin='mysql-bin-1.log'

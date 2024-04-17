@@ -1,9 +1,9 @@
-#!/bin/bash
+//1
 
-for N in 1 2 3 4 5 
+for N in 1 2 3 4 5
 do docker run -d --name=mysqlorchdb$N --net orchnet \
-  -v $PWD/dbOrch$N:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mypass \
-  mysql/mysql-server:5.7 \
+  -e MYSQL_ROOT_PASSWORD=mypass \
+  mysql/mysql-server:8.0 \
   --server-id=100 \
   --enforce-gtid-consistency='ON' \
   --log-slave-updates='ON' \
