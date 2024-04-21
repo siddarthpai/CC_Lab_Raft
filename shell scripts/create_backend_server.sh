@@ -1,3 +1,5 @@
+#2
+
 for N in 1 2 3 4 5
 do docker exec -t mysqlorchdb$N mysql -uroot -pmypass \
  -e "CREATE DATABASE IF NOT EXISTS orchestrator;" \

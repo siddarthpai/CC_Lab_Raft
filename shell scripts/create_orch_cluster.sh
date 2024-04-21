@@ -1,4 +1,4 @@
-//3
+#3
 
 for N in 1 2 3 4 5
 do docker run -d --name orchestrator$N --net orchnet -p "300$N":3000 \
